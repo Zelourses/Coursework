@@ -1,0 +1,8 @@
+<div class="solderSize">
+  <div class="solderName">{{solderNumber}} {{solder.name}}</div>
+  <div class="solderWeapon">{{solder.weapon}}</div>
+  <div class="solderKill">
+    {{solder.kill}}
+    <button (click)="removeSolder($event)">❌</button>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.line{
+  margin-top: 0;
+  size: 6px;
+  color: black;
+}
+#infoPlace {
+  width: 430px;
+}
+#squads{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#squads >div:hover{
+  background: #CCC;
+  border-radius: 50px;
+}
+.squadsHat{
+  margin: 5px 0 5px 5px;
+  font-size: larger;
+  padding: 8px;
+}
+#map{
+  width: 560px;
+}
+#partyBody{
+  margin-top: 10px;
+  margin-left: 10px;
+  border: black 2px solid;
+  border-radius: 20px;
+}

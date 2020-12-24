@@ -1,0 +1,9 @@
+<div class="stash">
+<h3>Последние Жалобы</h3>
+<div>
+  <app-card
+    *ngFor="let iterCard of cards"
+    [card] = "iterCard"
+  ></app-card>
+</div>
+</div>
