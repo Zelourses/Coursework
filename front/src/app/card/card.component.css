@@ -1,0 +1,13 @@
+.card {
+  padding: 3px 5px;
+  border: 1px dashed #ccc;
+  margin-bottom: 10px;
+}
+.cardTitle{
+  font-size: large;
+  margin-top: 2px;
+}
+.cardMessage{
+  font-size: small;
+  margin-bottom: 2px;
+}

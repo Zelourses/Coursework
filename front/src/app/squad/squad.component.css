@@ -1,0 +1,45 @@
+.squadBorder{
+  margin: 10px;
+  border: black solid 2px;
+  padding: 10px;
+  border-radius: 30px;
+}
+.squadHat{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+.squadBut{
+  margin: 2px;
+  border-radius: 30px;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+}
+#deleteSquad{
+  font-size: 60%;
+  color: #FF0000;
+}
+#weaponUp{
+  font-size: 70%;
+  font-weight: bold;
+  color: #0000FF;
+}
+#addSquad{
+  font-weight: bold;
+  color: #00A000
+}
+.titlesInput{
+  width: 80px;
+  display: inline-block;
+}
+.inputSolder{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  justify-items: center;
+}
+.addSolder{
+  border-radius: 20px;
+  margin: 10px;
+}

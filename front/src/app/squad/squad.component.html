@@ -1,0 +1,57 @@
+<div class="squadBorder">
+  <div class="squadHat">
+    <div>Отряд {{squadNumber}}</div>
+    <div><span>Счётчик Эму: {{squad.emuCounter}}</span>
+      <button class="squadBut" id="addSquad" (click)="showInputField()">{{addSymbol}}</button>
+      <button class="squadBut" id="weaponUp">⚔</button>
+      <button class="squadBut" id="deleteSquad" (click)="removeItem(squadNumber - 1)">❌</button>
+    </div>
+  </div>
+  <div *ngIf="showInPut else elseBlock">
+    <div class="inputSolder">
+      <div>
+        <div>
+          <span class="titlesInput">Имя:</span>
+          <label>
+            <input type="text" [value]="solderName" class="inputName">
+          </label>
+        </div>
+        <br>
+        <div>
+          <span class="titlesInput">Оружие:</span>
+          <label>
+            <input type="text" [value]="solderWeapon" class="inputWeapon">
+          </label>
+        </div>
+        <br>
+        <div>
+          <span class="titlesInput">Убийств:</span>
+          <label>
+            <input type="text" [value]="solderKill" class="inputKills">
+          </label>
+        </div>
+      </div>
+      <button class="addSolder" (click)="addSolder()">Добавить</button>
+    </div>
+  </div>
+  <ng-template #elseBlock>
+  <div class="squadHat">
+    <div>Капитан: {{squad.capName}}</div>
+    <div>
+      <!-- Тут ошибка вторая -->
+      <span>{{solderBody.childElementCount}}/20</span>
+      <button class="squadBut" (click)="hideSolders()">{{arrow}}</button>
+    </div>
+  </div>
+    <div #solderBody
+    [ngStyle]="{
+    display: hidden ? 'block' : 'none'
+    }">
+        <app-solder
+          *ngFor = "let iterSolder of squad.solders; let solderNumber = index;"
+          [solder] = "iterSolder"
+          [solderNumber] = "solderNumber + 1"
+        ></app-solder>
+    </div>
+  </ng-template>
+</div>

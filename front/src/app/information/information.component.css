@@ -1,0 +1,16 @@
+#infoBody{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+ul {
+  margin: 2px;
+  padding: 0 0 0 20px;
+  list-style-type: decimal;
+}
+.tittleInfo{
+  font-size: larger;
+  font-weight: bold;
+  padding-left: 10px;
+  margin: 0;
+}
