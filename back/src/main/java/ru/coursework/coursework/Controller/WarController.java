@@ -1,11 +1,10 @@
 package ru.coursework.coursework.Controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.coursework.coursework.Entity.Soldier;
-import ru.coursework.coursework.repository.SoldierRepository;
+import ru.coursework.coursework.Repositories.SoldierRepository;
 
 @RestController
 @RequestMapping("/api/war")
