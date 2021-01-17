@@ -24,10 +24,9 @@ public class DataService {
     final ComplaintsRepository complaintsRepository;
     final ComplaintGenerator complaintGenerator;
 
-    static List<Farmer> farmers =new ArrayList<>();
-    static ComplaintContainer[] complaints = new ComplaintContainer[Constants.AMOUNT_OF_COMPLAINTS];
-    static List<Complaint> tmp_complaints = new ArrayList<>();
-    static List<Integer> farmers_id = new ArrayList<>();
+    private final ComplaintContainer[] complaints = new ComplaintContainer[Constants.AMOUNT_OF_COMPLAINTS];
+    private final List<Complaint> tmp_complaints = new ArrayList<>();
+    private final List<Integer> farmers_id = new ArrayList<>();
 
     public DataService(DateService dateService,
                        FarmerRepository farmerRepository,
@@ -52,17 +51,20 @@ public class DataService {
     }
 
     private DataResponse generateData(){
+        tmp_complaints.clear();
+        farmers_id.clear();
         int amountOfFarmers=(int) farmerRepository.count();
         for (int i=0;i<Constants.AMOUNT_OF_COMPLAINTS;i++){
             // It will choose farmer from id 1 to max id
             farmers_id.add(ThreadLocalRandom.current().nextInt(1,amountOfFarmers+1));
         }
-        farmers = farmerRepository.findAllById(farmers_id);
-        int farmersSize=farmers.size();
+        List<Farmer> farmers = farmerRepository.findAllById(farmers_id);
+        int farmersSize= farmers.size();
+        List<ComplaintContainer> complaintContainers =complaintGenerator.generateComplaint(farmers,dateService.getDate(),Constants.AMOUNT_OF_COMPLAINTS);
         for (int i=0;i< Constants.AMOUNT_OF_COMPLAINTS;i++){
             farmers.get(i%farmersSize).addCounter_denunciation(1);
             int square = ThreadLocalRandom.current().nextInt(1,64);
-            complaints[i] = complaintGenerator.generateComplaint(farmers.get(i%farmersSize),square,dateService.getDate());
+            complaints[i] = complaintContainers.get(i);
             tmp_complaints.add(new Complaint(farmers.get(i%farmersSize),square,complaints[i].getComplaint()));
 
         }

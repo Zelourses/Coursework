@@ -10,13 +10,13 @@ public class Complaint {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "farmer_id")
     private Farmer farmer_id;
 
     private Integer square_number;
 
-    @Column(length = 256)
+    @Column(length = 256,columnDefinition = "varchar(256)")
     private String short_description;
 
     protected Complaint(){

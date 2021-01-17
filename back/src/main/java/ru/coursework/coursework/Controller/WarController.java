@@ -1,25 +1,28 @@
 package ru.coursework.coursework.Controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.coursework.coursework.Entity.Soldier;
+import ru.coursework.coursework.DTO.request.newSoldierRequest;
 import ru.coursework.coursework.Repositories.SoldierRepository;
+import ru.coursework.coursework.Services.SoldiersService;
 
 @RestController
 @RequestMapping("/api/war")
 public class WarController {
 
-    private final SoldierRepository soldierRepository;
+    final
+    SoldiersService soldiersService;
 
-    public WarController(SoldierRepository soldierRepository) {
-        this.soldierRepository = soldierRepository;
+    public WarController(SoldiersService soldiersService) {
+        this.soldiersService = soldiersService;
     }
 
     @PutMapping("/newSoldier")
-    @ResponseStatus(HttpStatus.CREATED)
-    public void newSoldier(){
-        soldierRepository.save(Soldier.newSimpleSoldier());
+    public ResponseEntity newSoldier(@RequestBody newSoldierRequest newSoldier){
+        soldiersService.newSoldier(newSoldier);
+        return ResponseEntity.ok("OK");
     }
 
     @GetMapping("/weaponize")

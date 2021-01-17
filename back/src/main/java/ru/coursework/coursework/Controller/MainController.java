@@ -26,8 +26,8 @@ public class MainController {
 
     @RequestMapping(value = "/getData", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity getData(){
-        return ResponseEntity.ok("Here is your data: {nothing, at least now}");
+    public DataResponse getData(){
+        return dataService.getData();
     }
 
 
